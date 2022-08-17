@@ -1,5 +1,9 @@
 package com.bikkadIt.repository;
 
-public interface ContactRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.bikkadIt.model.Contact;
+
+public interface ContactRepo extends JpaRepository<Contact, Integer>{
 
 }
