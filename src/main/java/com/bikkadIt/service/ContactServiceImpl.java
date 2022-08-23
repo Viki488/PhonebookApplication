@@ -30,4 +30,15 @@ public class ContactServiceImpl implements ContactService{
 		List<Contact> findAll = contactRepo.findAll();
 		return findAll;
 	}
+
+	@Override
+	public Contact getById(Integer contactId) {
+		Contact contact = contactRepo.findById(contactId).get();
+		return contact;
+	}
+
+	
+	
+	
+	
 }
