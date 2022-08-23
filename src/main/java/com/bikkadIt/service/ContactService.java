@@ -11,5 +11,8 @@ public interface ContactService {
 	List <Contact> getAllData ();
 	
 	Contact getById (Integer contactId);
+	
+	boolean updateContact (Contact contact);
+	
 
 }

@@ -37,7 +37,16 @@ public class ContactServiceImpl implements ContactService{
 		return contact;
 	}
 
-	
+	@Override
+	public boolean updateContact(Contact contact) {
+		Contact updateContact = contactRepo.save(contact);
+		if (updateContact==null) {
+			return  false;
+		}else {
+		return true;
+	}
+
+	}
 	
 	
 	
