@@ -74,6 +74,21 @@ public class ContactController {
     	}else {
     		String msg1="Given ContactId not matach to Database ";
 		return new  ResponseEntity<String>(msg1,HttpStatus.BAD_REQUEST);
+    	}	
+    }
+    @DeleteMapping(value="/softdDelelteById/{contactId}")
+    public  ResponseEntity<String> softdDelelteById (@PathVariable Integer contactId){
+    	boolean softDeleteById = contactServcie.softDeleteById(contactId);
+    	if(softDeleteById) {
+    		String msg="Contact Deleted Successfully";
+    		return new ResponseEntity<String>(msg,HttpStatus.OK);
+    	}else {
+   
+    		String msg1="Given ContactId not matach to Database ";
+    		return new  ResponseEntity<String>(msg1,HttpStatus.BAD_REQUEST);
+    		
     	}
+		
+    	
     }
 }

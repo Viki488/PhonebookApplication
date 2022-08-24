@@ -17,7 +17,7 @@ public interface ContactService {
 	
 	boolean HardDeleteById (Integer contactId);
 	
-	
+	boolean softDeleteById (Integer contactId);
 	
 	
 	
