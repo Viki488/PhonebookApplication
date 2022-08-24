@@ -1,6 +1,7 @@
 package com.bikkadIt.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,26 @@ public class ContactServiceImpl implements ContactService{
 		return true;
 	}
 
+	}
+
+	@Override
+	public boolean HardDeleteById(Integer contactId) {
+//		boolean existsById = contactRepo.existsById(contactId);
+//		if(existsById) {
+//			contactRepo.deleteById(contactId);
+//			return true;
+//		}else {
+//		
+//		return false;
+//		}
+		Optional<Contact> findById = contactRepo.findById(contactId);
+		
+		if (findById.isPresent()) {
+			contactRepo.deleteById(contactId);
+			return true;
+		}else {
+		return false;
+		}
 	}
 	
 	

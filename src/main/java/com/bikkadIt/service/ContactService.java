@@ -14,5 +14,15 @@ public interface ContactService {
 	
 	boolean updateContact (Contact contact);
 	
+	
+	boolean HardDeleteById (Integer contactId);
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

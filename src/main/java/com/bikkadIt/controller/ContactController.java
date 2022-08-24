@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,11 +48,12 @@ public class ContactController {
 		return new ResponseEntity<Contact>(getbyId,HttpStatus.OK);
 		
 	}
+    
     @PutMapping(value="/updateContact",consumes="application/json")
     public ResponseEntity<String> updateContact (@RequestBody Contact contact) {
     	boolean updateContact = contactServcie.updateContact(contact);
     	
-    	if(updateContact ==true) {
+    	if(updateContact==true) {
     		
     		String msg="Conatact update Successfull";
     		
@@ -61,6 +63,17 @@ public class ContactController {
     	String msg1="Contact not Updated";
 		return new ResponseEntity<String>(msg1,HttpStatus.BAD_REQUEST);
     	
+    	}
+    }
+    @DeleteMapping(value="/HarddeleteById/{contactId}")
+    public ResponseEntity<String> HarddeleteById (@PathVariable Integer contactId){
+    	boolean hardDeleteById = contactServcie.HardDeleteById(contactId);
+    	if(hardDeleteById) {
+    		String msg="Conatact Deleted Successfully";
+    		return new ResponseEntity<String>(msg,HttpStatus.OK);
+    	}else {
+    		String msg1="Given ContactId not matach to Database ";
+		return new  ResponseEntity<String>(msg1,HttpStatus.BAD_REQUEST);
     	}
     }
 }
